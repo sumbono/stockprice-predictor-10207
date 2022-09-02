@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "stockprice_predictor"
+version = "0.1.0"
+description = "A Restful API to predict stock prices"
+authors = ["Sumbono <sumbono102@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "0.81.0"
+uvicorn = "0.18.3"
+pandas = "^1.4.4"
+joblib = "^1.1.0"
+yfinance = "^0.1.74"
+pystan = "^3.5.0"
+prophet = "^1.1"
+plotly = "^5.10.0"
+gunicorn = "^20.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
