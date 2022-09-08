@@ -55,7 +55,7 @@ $ cd stockprice_predictor
     $ export PATH="$HOME/.local/bin:$PATH"
     ```
 
-1. Install the poetry dependencies:
+1. Install the app dependencies using poetry:
 
     ```sh
     $ poetry install

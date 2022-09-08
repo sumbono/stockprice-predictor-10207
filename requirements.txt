@@ -1,7 +1,7 @@
 # pystan must be installed before prophet
 # you may need to pip install it on it's own
 # before installing the remaining requirements
-# pip install pystan==2.19.1.1
+# pip install pystan==3.5.0
 
 pystan==3.5.0
 
