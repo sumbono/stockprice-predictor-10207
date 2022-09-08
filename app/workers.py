@@ -4,7 +4,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 
 
-TOTAL_THREADS = 3
+TOTAL_THREADS = 1
 
 
 class BackgroundThreads:
