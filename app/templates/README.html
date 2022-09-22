@@ -1,0 +1,94 @@
+<h1 id="stockpricespredictor-app">StockPricesPredictor App [Live README.md]</h1>
+<p>A demonstration of deploying and hosting a Machine Learning Model with FastAPI and Heroku.</p>
+<h2 id="pre-trained-stock-models">Pre-trained Stock Models</h2>
+<p>This is a stock's prices prediction app. input a stock name, then you will get forecast of the stock price for the next 7 days.</p>
+<p>We already have some pre-trained stock models listed below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">STOCK</span> <span class="kw">|</span> <span class="ex">COMPANY</span> <span class="kw">|</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">------------------------------</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">AAPL</span> <span class="kw">|</span> <span class="ex">Apple</span> Inc. <span class="kw">|</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">MSFT</span> <span class="kw">|</span> <span class="ex">Microsoft</span> Corporation <span class="kw">|</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">GOOGL</span> <span class="kw">|</span> <span class="ex">Alphabet</span> Inc. <span class="kw">|</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">GOOG</span> <span class="kw">|</span> <span class="ex">Alphabet</span> Inc. <span class="kw">|</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">AMZN</span> <span class="kw">|</span> <span class="ex">Amazon.com</span>, Inc. <span class="kw">|</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">TSLA</span> <span class="kw">|</span> <span class="ex">Tesla</span>, Inc. <span class="kw">|</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">META</span> <span class="kw">|</span> <span class="ex">Meta</span> Platforms, Inc. <span class="kw">|</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">NVDA</span> <span class="kw">|</span> <span class="ex">NVIDIA</span> Corporation <span class="kw">|</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">KO</span> <span class="kw">|</span> <span class="ex">The</span> Coca-Cola Company <span class="kw">|</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">VZ</span> <span class="kw">|</span> <span class="ex">Verizon</span> Communications Inc. <span class="kw">|</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">AMD</span> <span class="kw">|</span> <span class="ex">Advanced</span> Micro Devices, Inc. <span class="kw">|</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">INTC</span> <span class="kw">|</span> <span class="ex">Intel</span> Corporation <span class="kw">|</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">NFLX</span> <span class="kw">|</span> <span class="ex">Netflix</span>, Inc. <span class="kw">|</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">BYDDY</span> <span class="kw">|</span> <span class="ex">BYD</span> Company Limited <span class="kw">|</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">ENB</span> <span class="kw">|</span> <span class="ex">Enbridge</span> Inc. <span class="kw">|</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">OXY</span> <span class="kw">|</span> <span class="ex">Occidental</span> Petroleum Corporation <span class="kw">|</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">PANW</span> <span class="kw">|</span> <span class="ex">Palo</span> Alto Networks, Inc. <span class="kw">|</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">CRWD</span> <span class="kw">|</span> <span class="ex">CrowdStrike</span> Holdings, Inc. <span class="kw">|</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">LNG</span> <span class="kw">|</span> <span class="ex">Cheniere</span> Energy, Inc. <span class="kw">|</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">HPO</span> <span class="kw">|</span> <span class="ex">HP</span> Inc. <span class="kw">|</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">SNAP</span> <span class="kw">|</span> <span class="ex">Snap</span> Inc. <span class="kw">|</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">MDB</span> <span class="kw">|</span> <span class="ex">MongoDB</span>, Inc. <span class="kw">|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">BBY</span> <span class="kw">|</span> <span class="ex">Best</span> Buy Co., Inc. <span class="kw">|</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">CHWY</span> <span class="kw">|</span> <span class="ex">Chewy</span>, Inc. <span class="kw">|</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">FSLR</span> <span class="kw">|</span> <span class="ex">First</span> Solar, Inc. <span class="kw">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">OKTA</span> <span class="kw">|</span> <span class="ex">Okta</span>, Inc. <span class="kw">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">CHPT</span> <span class="kw">|</span> <span class="ex">ChargePoint</span> Holdings, Inc. <span class="kw">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">EE</span> <span class="kw">|</span> <span class="ex">Excelerate</span> Energy, Inc. <span class="kw">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">RKLB</span> <span class="kw">|</span> <span class="ex">Rocket</span> Lab USA, Inc. <span class="kw">|</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">TELL</span> <span class="kw">|</span> <span class="ex">Tellurian</span> Inc. <span class="kw">|</span></span></code></pre></div>
+<h2 id="live-app">Live App</h2>
+<p>Check out the <a href="https://stockprice-predictor-10207.herokuapp.com/docs">Site</a>.</p>
+<h2 id="how-to-use-the-live-app">How To Use The Live App</h2>
+<ul>
+    <li><h3 id="predict">Predict:</h3>
+    <p><img src="{{ url_for('static', path='images/predict_stock_prices.gif') }}" alt="" width="903" height="422" /></p></li>
+    <!-- <img class="image_center" id="general_txt_img" src="{{ url_for('static', path='images/predict_stock_prices.gif') }}" alt="" width="52" height="57"> -->
+    <li><h3 id="train">Train:</h3>
+    <p><img src="{{ url_for('static', path='images/train_new_stock.gif') }}" alt="" width="903" height="422" /></p></li>
+</ul>
+<h2 id="how-to-start-the-app">How To Start The App</h2>
+<ul>
+<li>Clone this repository</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">git</span> clone https://github.com/sumbono/stockprice-predictor-10207.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>$ <span class="bu">cd</span> stockprice_predictor</span></code></pre></div>
+<h3 id="with-docker">With Docker</h3>
+<ol>
+<li><p>Build and tag the Docker image:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">docker</span> build -t stock-price-app .</span></code></pre></div></li>
+<li><p>Spin up the container:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">docker</span> run --name stock-price-app -e PORT=8008 -p 8008:8008 -d stock-price-app:latest</span></code></pre></div></li>
+<li><p>Train the model:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">docker</span> exec -it stock-price-app python</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="ex">from</span> app.libs.train import train</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">train()</span></span></code></pre></div></li>
+<li><p>Test:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">curl</span> <span class="kw">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  <span class="ex">--header</span> <span class="st">&quot;Content-Type: application/json&quot;</span> <span class="kw">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  <span class="ex">--request</span> POST <span class="kw">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>  <span class="ex">http</span>://localhost:8008/predict/MSFT</span></code></pre></div></li>
+</ol>
+<h3 id="without-docker">Without Docker</h3>
+<ol>
+<li><p>Download and install poetry:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="ex">curl</span> -sSL https://install.python-poetry.org <span class="kw">|</span> <span class="ex">python</span> -</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>$ <span class="bu">export</span> <span class="va">PATH=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.local/bin:</span><span class="va">$PATH</span><span class="st">&quot;</span></span></code></pre></div></li>
+<li><p>Install the app dependencies using poetry:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="ex">poetry</span> install</span></code></pre></div></li>
+<li><p>Train the model:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="ex">poetry</span> run python</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="ex">from</span> app.libs.train import train</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">train()</span></span></code></pre></div></li>
+<li><p>Run the app:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">poetry</span> run uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8008</span></code></pre></div></li>
+<li><p>Test:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="ex">curl</span> <span class="kw">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>  <span class="ex">--header</span> <span class="st">&quot;Content-Type: application/json&quot;</span> <span class="kw">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>  <span class="ex">--request</span> POST <span class="kw">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>  <span class="ex">http</span>://localhost:8008/predict/MSFT</span></code></pre></div></li>
+</ol>
+<h2 id="credit">Credit</h2>
+<ul>
+<li>gif file created using <a href="https://www.screentogif.com/">ScreenToGif</a></li>
+</ul>
