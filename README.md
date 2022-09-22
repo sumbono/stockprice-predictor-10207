@@ -1,11 +1,62 @@
 # StockPricesPredictor App
 A demonstration of deploying and hosting a Machine Learning Model with FastAPI and Heroku.
 
-## Live app
+![](app/static/images/homepage.png)
 
-Check out the [site](https://stockprice-predictor-10207.herokuapp.com/docs).
+## Pre-trained Stock Models
+This is a stock's prices prediction app. input a stock name, then you will get forecast of the stock price for the next 7 days.
 
-## Want to use this project?
+We already have some pre-trained stock models listed below.
+
+```bash
+| STOCK | COMPANY |
+------------------------------
+| AAPL | Apple Inc. |
+| MSFT | Microsoft Corporation |
+| GOOGL | Alphabet Inc. |
+| GOOG | Alphabet Inc. |
+| AMZN | Amazon.com, Inc. |
+| TSLA | Tesla, Inc. |
+| META | Meta Platforms, Inc. |
+| NVDA | NVIDIA Corporation |
+| KO | The Coca-Cola Company |
+| VZ | Verizon Communications Inc. |
+| AMD | Advanced Micro Devices, Inc. |
+| INTC | Intel Corporation |
+| NFLX | Netflix, Inc. |
+| BYDDY | BYD Company Limited |
+| ENB | Enbridge Inc. |
+| OXY | Occidental Petroleum Corporation |
+| PANW | Palo Alto Networks, Inc. |
+| CRWD | CrowdStrike Holdings, Inc. |
+| LNG | Cheniere Energy, Inc. |
+| HPO | HP Inc. |
+| SNAP | Snap Inc. |
+| MDB | MongoDB, Inc. |
+| BBY | Best Buy Co., Inc. |
+| CHWY | Chewy, Inc. |
+| FSLR | First Solar, Inc. |
+| OKTA | Okta, Inc. |
+| CHPT | ChargePoint Holdings, Inc. |
+| EE | Excelerate Energy, Inc. |
+| RKLB | Rocket Lab USA, Inc. |
+| TELL | Tellurian Inc. |
+```
+
+## Live App
+Check out the [Site](https://stockprice-predictor-10207.herokuapp.com/).
+
+
+## How To Use The Live App
+
+- ### Predict: 
+    ![](app/static/images/predict_stock_prices.gif)
+
+- ### Train:
+    ![](app/static/images/train_new_stock.gif)
+
+
+## How To Start The App
 
 - Clone this repository
 
@@ -84,3 +135,8 @@ $ cd stockprice_predictor
       --request POST \
       http://localhost:8008/predict/MSFT
     ```
+
+
+## Credit
+
+- gif file created using [ScreenToGif](https://www.screentogif.com/) 

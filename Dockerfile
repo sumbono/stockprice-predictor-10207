@@ -13,6 +13,7 @@ RUN ls
 COPY . .
 RUN ls -lh /opt/stockprice_predictor
 
+RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install pystan==3.5.0
 

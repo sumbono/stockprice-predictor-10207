@@ -1,38 +1,3 @@
-from app.libs.stock_name import stock_name_dict
-
-def make_markdown_table(array):
-    """ 
-    Input:  Python list with rows of table as lists,
-            First element as header. 
-    Output: String to put into a .md file 
-    
-    Ex Input: 
-        [["Name", "Age", "Height"],
-         ["Jake", 20, 5'10],
-         ["Mary", 21, 5'7]] 
-    """
-
-    nl = "\n"
-
-    markdown = nl
-    markdown += f"| {' | '.join(array[0])} |"
-
-    markdown += nl
-    markdown += f"| {' | '.join(['---']*int(len(array[0])))} |"
-
-    markdown += nl
-    for entry in array[1:]:
-        markdown += f"| {' | '.join(entry)} |{nl}"
-
-    return markdown
-
-
-stock_company_lst = [["STOCK", "COMPANY"],]
-for k,v in stock_name_dict.items():
-    vnc = v.split('|')
-    stock_company_lst.append([vnc[0].strip(), vnc[1].strip()])
-stock_company_table = make_markdown_table(stock_company_lst)
-
 metadata = {
     "title":"StockPricesPredictor App",
     "description" : """StockPricesPredictor App API helps you to predict the stock-prices for next 7 days. 🚀
@@ -84,7 +49,7 @@ metadata = {
             "name": "predict",
             "description": "Predict stock prices for next 7 days.",
             "externalDocs": {
-                "description": "Top 30 stocks on watchlists by Yahoo Finance Users (2th Sept 2022)",
+                "description": "The list of most-added stocks by Yahoo Finance Users",
                 "url": "https://finance.yahoo.com/u/yahoo-finance/watchlists/most-added",
             },
         },
@@ -92,9 +57,47 @@ metadata = {
             "name": "train",
             "description": "Train a new or retrain an existing model. based on the stock name",
             "externalDocs": {
-                "description": "Stocks on each watchlists by Yahoo Finance",
+                "description": "Wanted to predict other stocks? Check other list of stocks on Yahoo Finance",
                 "url": "https://finance.yahoo.com/watchlists",
             },
         },
     ],
 }
+
+
+# =======================| Optional function |============================ #
+
+from app.libs.stock_name import stock_name_dict
+
+def make_markdown_table(array):
+    """ 
+    Input:  Python list with rows of table as lists,
+            First element as header. 
+    Output: String to put into a .md file 
+    
+    Ex Input: 
+        [["Name", "Age", "Height"],
+         ["Jake", 20, 5'10],
+         ["Mary", 21, 5'7]] 
+    """
+
+    nl = "\n"
+
+    markdown = nl
+    markdown += f"| {' | '.join(array[0])} |"
+
+    markdown += nl
+    markdown += f"| {' | '.join(['---']*int(len(array[0])))} |"
+
+    markdown += nl
+    for entry in array[1:]:
+        markdown += f"| {' | '.join(entry)} |{nl}"
+
+    return markdown
+
+
+stock_company_lst = [["STOCK", "COMPANY"],]
+for k,v in stock_name_dict.items():
+    vnc = v.split('|')
+    stock_company_lst.append([vnc[0].strip(), vnc[1].strip()])
+stock_company_table = make_markdown_table(stock_company_lst)
