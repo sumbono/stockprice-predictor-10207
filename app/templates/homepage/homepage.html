@@ -2,60 +2,71 @@
 
 
 {% block title %}
+    <link rel="icon" type="image/png" sizes="180x180" href="/static/images/bono-topi.jpg">
     <link href="/static/css/indexstyle.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans"/>
     <title>Stock's Prices Predictor App</title>
 {% endblock %} 
 
 {% block content %}
-        <div id='title'>
-            <h1>Stock's Prices Predictor App</h1>
-            <p id="jenisteks">Deploying and hosting machine learning models with FastAPI and Heroku.</p>
-        </div>
-    <hr>
-    
-    <div id='container1'>
-        <p id="subtitle">App Documentations</p>
-        <div>
+    <div id="container">
+        
+        <h1 id='title'>Stock's Prices Predictor App</h1>
+        <p id="jenisteks">-Deploying and hosting machine learning models with FastAPI and Heroku-</p>
+        
+        <hr>
+        <hr>
+        <br/>
+        
+        <p id="subtitle">
+            App Documentations
+            <br/>
+            <a id="jenisteks" href="/docs">swagger ui</a> | <a id="jenisteks" href="/redoc">redoc ui</a>
+        </p>
+
+        <div id='container1'>
             <ul>
-                <!-- <li><p><a href="https://stockprice-predictor-10207.herokuapp.com/docs">Live app documentations page</a></p></li> -->
-                <li><p>App documentations: <a href="/docs">swagger ui</a> | <a href="/redoc">redoc ui</a></p></li>
-                <li><p id="predict">Predict:</p>
-                <p><img src="{{ url_for('static', path='images/predict_stock_prices.gif') }}" alt="center" width="903" height="422" /></p></li>
-                <li><p id="train">Train:</p>
-                <p><img src="{{ url_for('static', path='images/train_new_stock.gif') }}" alt="center" width="903" height="422" /></p></li>
+                <li>
+                    <p id="predict">Predict:</p>
+                    <p><img id="gif_img" src="{{ url_for('static', path='images/predict_stock_prices.gif') }}" alt="center" width="903" height="422" /></p>
+                </li>
+                <li>
+                    <p id="train">Train:</p>
+                    <p><img id="gif_img" src="{{ url_for('static', path='images/train_new_stock.gif') }}" alt="center" width="903" height="422" /></p>
+                </li>
             </ul>            
         </div>
-    </div>
-    <br/>
-    <br/>
-    
-    <div id='container'>
-        <p id="subtitle">MEET THE CREATOR:</p>
-        <div>
-            <img class="image_center" id="general_txt_img" src="{{ url_for('static', path='images/bono-topi.jpg') }}" alt="" width="52" height="57">
+        
+        <hr>
+        <hr>
+        
+        <div id='container2'>
+            <p id="subtitle">Contact me at</p>
+            <div>
+                <img class="image_center" id="general_txt_img" src="{{ url_for('static', path='images/bono-topi.jpg') }}" alt="" width="52" height="57">
+            </div>
             <p id="jenisteks">
+                | <a href="mailto:sumbono102@gmail.com" rel="noopener noreferrer" class="link">Email</a> 
                 | <a href="https://github.com/sumbono" target="_blank">Github</a> | 
                 <a href="https://www.linkedin.com/in/sumbono/" target="_blank">Linkedin</a> |
-                <a href="mailto:sumbono102@gmail.com" rel="noopener noreferrer" class="link">Send email to Me</a>
             </p>
         </div>
-    </div>
+    
+        <div class="copyright">
+            <br>
+            <p align="center">
+                <audio title="Relax" src="{{ url_for('static', path='audio/embun-seruling.m4a') }}" controls autoplay loop>
+                Audio element not supported by your browser
+                </audio>
+            </p>
+            <h6 align="center">
+                &copy; 2022 Sumbono. All rights reserved.
+                This project uses 
+                <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a> & 
+                <a href="https://jinja.palletsprojects.com/en/2.11.x/" target="_blank">Jinja2</a>.
+            </h6>
+        </div>
 
-    <br/>
-    <div class="copyright">
-        <br>
-        <p align="center">
-            <audio src="{{ url_for('static', path='audio/embun-seruling.m4a') }}" controls autoplay loop>
-            Audio element not supported by your browser
-            </audio>
-        </p>
-        <h5>
-            &copy; 2022 Sumbono. All rights reserved.
-            This project uses: 
-            <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a> & 
-            <a href="https://jinja.palletsprojects.com/en/2.11.x/" target="_blank">Jinja2</a>.
-        </h5>
     </div>
 
 {% endblock %} 

@@ -1,8 +1,6 @@
 # StockPricesPredictor App
 A demonstration of deploying and hosting a Machine Learning Model with FastAPI and Heroku.
 
-![](app/static/images/homepage.png)
-
 ## Pre-trained Stock Models
 This is a stock's prices prediction app. input a stock name, then you will get forecast of the stock price for the next 7 days.
 
