@@ -6,10 +6,11 @@ from app.webpage.homepage import homepage_router
 
 # import the api endpoint routers
 from app.api.predict import predict_endpoint
+from app.api.predict_plotter import predict_plotter_endpoint
 from app.api.train import train_endpoint
 
 # import other necessary modules on app-startup
-from app.metadata import metadata
+from app.api.metadata import metadata
 from app.workers import background_threads
 
 
@@ -23,6 +24,7 @@ app = FastAPI(
 
 app.include_router(homepage_router)
 app.include_router(predict_endpoint)
+app.include_router(predict_plotter_endpoint)
 app.include_router(train_endpoint)
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

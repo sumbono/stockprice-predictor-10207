@@ -4,27 +4,92 @@
 {% block title %}
     <link rel="icon" type="image/png" sizes="180x180" href="/static/images/bono-topi.jpg">
     <link href="/static/css/indexstyle.css" rel="stylesheet">
+    <!-- <link href="{{ url_for('static', path='css/indexstyle.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans"/>
     <title>Stock's Prices Predictor App</title>
 {% endblock %} 
 
 {% block content %}
-    <div id="container">
+    <div id="main-container">
         
         <h1 id='title'>Stock's Prices Predictor App</h1>
-        <p id="jenisteks">-Deploying and hosting machine learning models with FastAPI and Heroku-</p>
+        <p id="jenisteks">-Deploying and hosting machine learning app with FastAPI and Heroku-</p>
         
         <hr>
         <hr>
         <br/>
         
         <p id="subtitle">
+            Try The App
+            <br/>
+        </p>
+        <div id='app-try-container'>
+            <form id="myform" action="/predict" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="choices_dropdown">Choose a stock: </label>
+                    <select id="choices_dropdown" name="dropdown_choices">
+                        {% for choice in choices %}
+                        <option value={{choice}}>{{choice}}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="predict_selected" type='submit' class="btn-primary" onclick="return clickButton();">Predict</button>
+                </div>
+            </form>
+            <br/>
+            <span id="result"></span>
+            
+            <script type="text/javascript">
+                function clickButton(){
+                    var name=document.getElementById('choices_dropdown').value;
+                    $.ajax({
+                        type:"post",
+                        url:$('#myform').attr('action') + '/' + name,
+                        data: {'name' :name},
+                        cache: false,
+                        dataType: "json",
+                        success: function (response) {
+                            alert('Get prediction');
+                            $('#msg').html(response);
+                            const myJSON = JSON.stringify(response);
+                            // $( "#result" ).empty().append( myJSON );
+                            console.log({ response });
+                            
+                            $.ajax({
+                                contentType: 'application/json',
+                                type:"post",
+                                url:$('#myform').attr('action') + '_plotter',
+                                data: myJSON,
+                                cache: false,
+                                dataType: "text",
+                                success: function (response2) {
+                                    // alert('Plotting prediction');
+                                    console.log(response2)
+                                    $( "#result" ).empty().append(response2.replace(/"/g, '').replace(/\\/g, ''));
+                                }
+                            });
+                        }
+                    });
+                    return false;
+                }
+            </script>
+            
+            <br/>
+            <br/>
+            <br/>
+            
+        </div>
+        
+        <br/>
+        <hr>
+        <hr>
+        <br/>
+        <p id="subtitle">
             App Documentations
             <br/>
             <a id="jenisteks" href="/docs">swagger ui</a> | <a id="jenisteks" href="/redoc">redoc ui</a>
         </p>
 
-        <div id='container1'>
+        <div id='app-docs-container'>
             <ul>
                 <li>
                     <p id="predict">Predict:</p>
@@ -40,7 +105,7 @@
         <hr>
         <hr>
         
-        <div id='container2'>
+        <div id='contact-container'>
             <p id="subtitle">Contact me at</p>
             <div>
                 <img class="image_center" id="general_txt_img" src="{{ url_for('static', path='images/bono-topi.jpg') }}" alt="" width="52" height="57">

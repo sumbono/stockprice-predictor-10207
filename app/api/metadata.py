@@ -54,6 +54,10 @@ metadata = {
             },
         },
         {
+            "name": "predict_plotter",
+            "description": "Plot the prediction results.",
+        },
+        {
             "name": "train",
             "description": "Train a new or retrain an existing model. based on the stock name",
             "externalDocs": {
@@ -67,7 +71,7 @@ metadata = {
 
 # =======================| Optional function |============================ #
 
-from app.libs.stock_name import stock_name_dict
+from app.api.stock_name import stock_name_dict
 
 def make_markdown_table(array):
     """ 
@@ -98,6 +102,6 @@ def make_markdown_table(array):
 
 stock_company_lst = [["STOCK", "COMPANY"],]
 for k,v in stock_name_dict.items():
-    vnc = v.split('|')
+    vnc = v.split('-')
     stock_company_lst.append([vnc[0].strip(), vnc[1].strip()])
 stock_company_table = make_markdown_table(stock_company_lst)
