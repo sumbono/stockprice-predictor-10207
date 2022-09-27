@@ -45,6 +45,27 @@ a {
     color: #05590B;
 }
 
+.morelessbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#morebtn {
+    font-display: block;
+    font-size: 10pt;
+    text-align: center;
+    text-decoration-color: #FFFFFF;
+    color: white;
+}
+
+#lessbtn {
+    font-display: block;
+    font-size: 10pt;
+    text-align: center;
+    text-decoration-color: #FFFFFF;
+    color: white;
+}
 
 #quiz {
     text-indent: 10px;
@@ -68,8 +89,8 @@ a {
     margin:auto;
     padding: 15px 15px 15px 15px;
     background-color: #0D6404;
-    border:4px solid #FFFFFF;
-    border-radius: 75px;
+    /* border:4px solid #FFFFFF; */
+    /* border-radius: 75px; */
     font-weight: bold;
     text-align: center;
 }
