@@ -7,7 +7,7 @@ from app.api.stock_name import StockName
 templates = Jinja2Templates(directory="app/templates")
 homepage_router = APIRouter()
 
-@homepage_router.get("/")
+@homepage_router.get("/", tags=["homepage"], include_in_schema=False)
 async def home(request: Request):
 	return templates.TemplateResponse("homepage/homepage.html",context={'request': request, 'choices': [e.value for e in StockName]})
 	

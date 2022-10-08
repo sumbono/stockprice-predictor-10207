@@ -1,21 +1,19 @@
-import datetime
-from pathlib import Path
-
 import joblib
 import yfinance as yf
+
+from datetime import datetime, timedelta
+from pathlib import Path
 from prophet import Prophet
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 
 def train(ticker="MSFT"):
-    TODAY = datetime.date.today()
-    n_year_ago = datetime.datetime.now() - datetime.timedelta(days=365*3)
+    TODAY = datetime.today()
+    n_year_ago = TODAY - timedelta(days=365*1)
     
     try:
         data = yf.download(ticker, n_year_ago.strftime("%Y-%m-%d"), TODAY.strftime("%Y-%m-%d"))
-        # print(data.head())
-        # print(data.info())
         data["Adj Close"].plot(title=f"{ticker} Stock Adjusted Closing Price")
 
         df_forecast = data.copy()
@@ -24,9 +22,7 @@ def train(ticker="MSFT"):
         df_forecast["y"] = df_forecast["Adj Close"]
         df_forecast = df_forecast[["ds", "y"]]
         df_forecast
-        # print(df_forecast.head())
-        # print(' ')
-
+        
         model = Prophet()
         model.fit(df_forecast)
 

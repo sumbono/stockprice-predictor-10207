@@ -1,21 +1,17 @@
 import base64, json
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from io import BytesIO
 from matplotlib.figure import Figure
-from pydantic import BaseModel
-from typing import Dict
 
 from app.api.stock_name import stock_name_dict
+from app.libs.models import PredictionPlot
 
-class StockPrediction(BaseModel):
-    ticker: str
-    forecast: Dict
 
 predict_plotter_endpoint = APIRouter()
 
-@predict_plotter_endpoint.post("/predict_plotter", status_code=200, tags=["predict_plotter"])
-async def get_prediction_plot(stock_prediction: StockPrediction):
+@predict_plotter_endpoint.post("/predict_plotter", status_code=200, tags=["predict_plotter"], include_in_schema=False)
+async def get_prediction_plot(stock_prediction: PredictionPlot):
     print(stock_prediction.ticker)
     print(stock_prediction.forecast)
     

@@ -1,5 +1,5 @@
-# StockPricesPredictor App
-A demonstration of deploying and hosting a Machine Learning Model with FastAPI and Heroku.
+# StockPricesPredictor App 🚀
+A demonstration of serving machine learning models with FastAPI.
 
 ## Pre-trained Stock Models
 This is a stock's prices prediction app. input a stock name, then you will get forecast of the stock price for the next 7 days.
@@ -44,14 +44,16 @@ We already have some pre-trained stock models listed below.
 ## Live App
 Check out the [Site](https://stockprice-predictor-10207.herokuapp.com/).
 
+![](app/static/images/SPP_homepage.gif)
 
-## How To Use The Live App
+
+<!-- ## How To Use The Live App
 
 - ### Predict: 
     ![](app/static/images/predict_stock_prices.gif)
 
 - ### Train:
-    ![](app/static/images/train_new_stock.gif)
+    ![](app/static/images/train_new_stock.gif) -->
 
 
 ## How To Start The App
@@ -77,15 +79,6 @@ $ cd stockprice_predictor
     $ docker run --name stock-price-app -e PORT=8008 -p 8008:8008 -d stock-price-app:latest
     ```
 
-1. Train the model:
-
-    ```sh
-    $ docker exec -it stock-price-app python
-
-    >>> from app.libs.train import train
-    >>> train()
-    ```
-
 1. Test:
 
     ```sh
@@ -98,25 +91,24 @@ $ cd stockprice_predictor
 ### Without Docker
 
 1. Download and install poetry:
-
-    ```sh
-    $ curl -sSL https://install.python-poetry.org | python -
-    $ export PATH="$HOME/.local/bin:$PATH"
-    ```
+    - Using official installer:
+        ```sh
+        $ curl -sSL https://install.python-poetry.org | python -
+        $ export PATH="$HOME/.local/bin:$PATH"
+        ```
+    - Using pip:
+        ```sh
+        $ pip install poetry
+        ```
+        or
+        ```sh
+        $ pip install poetry==1.1.15
+        ```
 
 1. Install the app dependencies using poetry:
 
     ```sh
     $ poetry install
-    ```
-
-1. Train the model:
-
-    ```sh
-    $ poetry run python
-
-    >>> from app.libs.train import train
-    >>> train()
     ```
 
 1. Run the app:

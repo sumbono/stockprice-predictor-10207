@@ -48,23 +48,23 @@ metadata = {
         {
             "name": "predict",
             "description": "Predict stock prices for next 7 days.",
-            "externalDocs": {
-                "description": "The list of most-added stocks by Yahoo Finance Users",
-                "url": "https://finance.yahoo.com/u/yahoo-finance/watchlists/most-added",
-            },
+            # "externalDocs": {
+            #     "description": "The list of most-added stocks by Yahoo Finance Users",
+            #     "url": "https://finance.yahoo.com/u/yahoo-finance/watchlists/most-added",
+            # },
         },
-        {
-            "name": "predict_plotter",
-            "description": "Plot the prediction results.",
-        },
+        # {
+        #     "name": "predict_plotter",
+        #     "description": "Plot the prediction results. The input is response from /predict endpoint.",
+        # },
         {
             "name": "train",
-            "description": "Train a new or retrain an existing model. based on the stock name",
-            "externalDocs": {
-                "description": "Wanted to predict other stocks? Check other list of stocks on Yahoo Finance",
-                "url": "https://finance.yahoo.com/watchlists",
-            },
-        },
+            "description": "Train a stock model.",
+            # "externalDocs": {
+            #     "description": "Wanted to predict other stocks? Check other list of stocks on Yahoo Finance",
+            #     "url": "https://finance.yahoo.com/watchlists",
+            # },
+        }
     ],
 }
 

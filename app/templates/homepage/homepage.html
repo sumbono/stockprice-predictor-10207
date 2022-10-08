@@ -7,18 +7,17 @@
     <!-- <link href="{{ url_for('static', path='css/indexstyle.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans"/>
     <title>Stock's Prices Predictor App</title>
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
     <div id="main-container">
         
         <h1 id='title'>Stock's Prices Predictor App</h1>
-        <p id="jenisteks">-Serve machine learning model with FastAPI-</p>
+        <p id="jenisteks">Helps you to predict the stock's prices for next 7 days 🚀</p>
         <hr>
         <hr>
         
         <div id='app-try-container'>
-            <p id="subtitle">Try The App</p>
             <form id="myform" action="/predict" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="choices_dropdown">Choose a stock: </label>
@@ -34,38 +33,30 @@
                     <button id="predict_selected" type='submit' class="btn-primary" onclick="return clickButton();">Submit</button>
                 </div>
             </form>
-            <br/>
-            <div class="morelessbtn"><span id="result" style="display: none;"></span></div>
-            <!-- Here a loader is created which loads till response comes -->
-            <div class="morelessbtn"><div class="spinner-border" role="status" id="loading" style="display: none;"></div></div>
+        </div>
+        <div class="morelessbtn" id='app-try-container'>
+            <p id="result_placeholder" style="font-size: 8pt; font-style: oblique;">=== result will be here ===</p>
+            <span id="result" style="display: none;"></span>
+            <div class="spinner-border" role="status" id="loading" style="display: none;"></div>
         </div>
         
         <hr>
         <hr>
         
-        <p id="subtitle">
-            API Documentations
+        <p id="subtitle" style="font-size: 12pt;">
+            Interactive API Documentations: 
+            <br/>
+            <a style="font-size: 12pt;" href="/docs">swagger ui</a> | <a style="font-size: 12pt;" href="/redoc">redoc ui</a>
         </p>
+
         <div class="morelessbtn">
-            <button class="btn-warning" id="morebtn" onclick="return moreButton();">More.. &#128071;</button>
+            <button class="btn-warning" id="morebtn" onclick="return moreButton();">Show.. &#128071;</button>
         </div>
         <div id='app-docs-container' style="display: none;">
-            <ul>
-                <li>
-                    Docs: <p style="font-size: 10pt;"><a id="jenisteks" href="/docs">swagger ui</a> | <a id="jenisteks" href="/redoc">redoc ui</a></p>
-                </li>
-                <li>
-                    <p id="predict">Predict:</p>
-                    <p><img id="gif_img" src="{{ url_for('static', path='images/predict_stock_prices.gif') }}" alt="center" width="903" height="422" /></p>
-                </li>
-                <li>
-                    <p id="train">Train:</p>
-                    <p><img id="gif_img" src="{{ url_for('static', path='images/train_new_stock.gif') }}" alt="center" width="903" height="422" /></p>
-                </li>
-            </ul>            
+            <p><img id="gif_img" src="{{ url_for('static', path='images/spp_api_docs.gif') }}" alt="center" width="903" height="422" /></p>
         </div>
         <div class="morelessbtn">
-            <button class="btn-warning" id="lessbtn" style="display: none;" onclick="return lessButton();">Less.. &#128070;</button>
+            <button class="btn-warning" id="lessbtn" style="display: none;" onclick="return lessButton();">Hide.. &#128070;</button>
         </div>
 
         <hr>
@@ -102,6 +93,7 @@
             function clickButton(){
                 document.getElementById('loading').style.display = 'flex';
                 document.getElementById('result').style.display = 'none';
+                document.getElementById('result_placeholder').style.display = 'none';
 
                 var stock_name=document.getElementById('choices_dropdown').value;
                 var stock_action=document.getElementById('choices_action').value;
@@ -114,7 +106,6 @@
                         cache: false,
                         dataType: "json",
                         success: function (response) {
-                            // alert('Get '+ stock_name + ' prices prediction!');
                             $('#msg').html(response);
                             console.log({ response });
                             const myJSON = JSON.stringify(response);
@@ -144,7 +135,6 @@
                         cache: false,
                         dataType: "json",
                         success: function (response) {
-                            // alert(stock_name + ' model, trained!');
                             document.getElementById('loading').style.display = 'none';
                             document.getElementById('result').style.display = 'flex';
                             $('#msg').html(response);
